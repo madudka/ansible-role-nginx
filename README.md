@@ -28,14 +28,14 @@ ansible-galaxy collection install community.general
 
 Role Variables
 --------------
-Defaults variables `/defaults/main.yml`:
+Default lower priority variables for this role `/defaults/main.yml`:
 
 | Name                 | Description                            | Value example           |
 |----------------------|----------------------------------------|-------------------------|
 | `nginx_conf_path`    | The path to the nginx.conf file.       | /etc/nginx/nginx.conf   |
 | `nginx_modules_path` | The path to the Nginx modules catalog. | /usr/lib/nginx/modules/ |
 
-User variables `/vars/main.yml`:
+Variables associated with this role `/vars/main.yml`:
 
 | Name                 | Description                                                   | Value example                           |
 |----------------------|---------------------------------------------------------------|-----------------------------------------|
