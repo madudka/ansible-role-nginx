@@ -1,0 +1,18 @@
+---
+galaxy_info:
+  role_name: nginx
+  author: madudka
+  description: nginx debian installer
+  company: madudka.dev
+  license: GPL-3.0-only
+  min_ansible_version: 2.16.8
+  platforms:
+    - name: Debian
+      versions:
+        - bookworm
+  galaxy_tags:
+    - linux
+    - debian
+    - nginx
+
+dependencies: []

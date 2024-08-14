@@ -1,0 +1,42 @@
+---
+- name: Install Nginx
+  ansible.builtin.package:
+    name: nginx
+    state: present
+
+- name: Install libnginx-mod-stream
+  ansible.builtin.package:
+    name: libnginx-mod-stream
+    state: present
+
+- name: Check ngx_stream_module.so exists
+  stat:
+    path: "{{ nginx_modules_path }}ngx_stream_module.so"
+  register: file_info
+
+- name: Check ngx_stream_module.so exists
+  fail:
+    msg: "ngx_stream_module.so is not found, stopping execution."
+  when: not file_info.stat.exists
+
+- name: Create /etc/nginx/nginx.conf
+  ansible.builtin.copy:
+    dest: "{{ nginx_conf_path }}"
+    content: |
+      load_module {{ nginx_modules_path }}ngx_stream_module.so;
+      
+      events {}
+
+      stream {
+        upstream {{ servers_group_name }} {
+          {% for server in servers_list %}
+            server {{ server.ip }}:{{ server.port }};
+          {% endfor %}
+        }
+
+        server {
+          listen {{ listen_port }};
+          proxy_pass {{ servers_group_name }};
+        }
+      }
+  notify: Restart Nginx

@@ -1,0 +1,7 @@
+---
+listen_port: 6443
+servers_group_name: k3s_servers
+servers_list:
+  - { ip: "192.168.0.101", port: "6443" }
+  - { ip: "192.168.0.102", port: "6443" }
+  - { ip: "192.168.0.103", port: "6443" }
