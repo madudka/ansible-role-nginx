@@ -1,0 +1,16 @@
+load_module {{ nginx_modules_path }}ngx_stream_module.so;
+
+events {}
+
+stream {
+  upstream {{ servers_group_name }} {
+    {% for server in servers_list %}
+      server {{ server.ip }}:{{ server.port }};
+    {% endfor %}
+  }
+
+  server {
+    listen {{ listen_port }};
+    proxy_pass {{ servers_group_name }};
+  }
+}

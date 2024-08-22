@@ -30,18 +30,18 @@ Role Variables
 --------------
 Default lower priority variables for this role `/defaults/main.yml`:
 
-| Name                 | Description                            | Value example           |
-|----------------------|----------------------------------------|-------------------------|
-| `nginx_conf_path`    | The path to the nginx.conf file.       | /etc/nginx/nginx.conf   |
-| `nginx_modules_path` | The path to the Nginx modules catalog. | /usr/lib/nginx/modules/ |
+| Name                 | Description                      | Value example           |
+|----------------------|----------------------------------|-------------------------|
+| `nginx_conf_path`    | Path to nginx.conf file.         | /etc/nginx/nginx.conf   |
+| `nginx_modules_path` | Path to Nginx modules directory. | /usr/lib/nginx/modules/ |
 
 Variables associated with this role `/vars/main.yml`:
 
-| Name                 | Description                                                   | Value example                           |
-|----------------------|---------------------------------------------------------------|-----------------------------------------|
-| `listen_port`        | The port that the server listens on.                          | 6443                                    |
-| `servers_group_name` | The name of the server group that connections are proxied to. | k3s_servers                             |
-| `server_list`        | The list of servers that connections are proxied to.          | - { ip: "192.168.0.101", port: "6443" } |
+| Name                 | Description                     | Value example                           |
+|----------------------|---------------------------------|-----------------------------------------|
+| `listen_port`        | Server listening port.          | 6443                                    |
+| `servers_group_name` | Server group name for proxying. | k3s_servers                             |
+| `server_list`        | List of proxy servers.          | - { ip: "192.168.0.101", port: "6443" } |
 
 Dependencies
 ------------
