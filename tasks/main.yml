@@ -19,7 +19,7 @@
     msg: "ngx_stream_module.so is not found, stopping execution."
   when: not file_info.stat.exists
 
-- name: Create /etc/nginx/nginx.conf
+- name: Create nginx.conf
   ansible.builtin.template:
     src: nginx.conf.j2
     dest: "{{ nginx_conf_path }}"
