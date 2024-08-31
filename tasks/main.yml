@@ -10,12 +10,12 @@
     state: present
 
 - name: Check ngx_stream_module.so exists
-  stat:
+  ansible.builtin.stat:
     path: "{{ nginx_modules_path }}ngx_stream_module.so"
   register: file_info
 
 - name: Check ngx_stream_module.so exists
-  fail:
+  ansible.builtin.fail:
     msg: "ngx_stream_module.so is not found, stopping execution."
   when: not file_info.stat.exists
 
